@@ -195,7 +195,11 @@
                                     <td>{{ $pr->description }}</td>
                                     <td>{{ $pr->price }}</td>
                                     <td>{{ $pr->quantity }}</td>
-                                    <td>{{ $pr->status }}</td>
+                                    @if ($pr->status == 1)
+                                    <td><a href="#" class="btn btn-success">Active</a></td>
+                                    @else
+                                    <td><a href="#" class="btn btn-danger">Inactive</a></td>
+                                    @endif
                                     <td colspan="2"> <a href="{{route('product.edit', $pr->id)}}"
                                             class=" btn btn-outline-warning editbtn"
                                             style=" border-color:rgb(160, 135, 135);color:rgb(160, 135, 135)">

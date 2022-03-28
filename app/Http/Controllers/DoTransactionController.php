@@ -37,7 +37,7 @@ class DoTransactionController extends Controller
             $trxDetail->product_id = $cart->product_id;
             $trxDetail->harga = $cart->subTotal;
             $trxDetail->qty = $cart->quantity;
-            $trxDetail->subtotal = $cart->subTotal;
+            $trxDetail->subTotal = $cart->subTotal;
             $trxDetail->user_id = $user_id;
             $trxDetail->save();
         }

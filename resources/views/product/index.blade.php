@@ -17,7 +17,7 @@
             <div class=" col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/dashboard" style="color: rgb(160, 135, 135)">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#" style="color:rgb(160, 135, 135)">Product</a></li>
+                    <li class="breadcrumb-item"><a href="/product" style="color:rgb(160, 135, 135)">Product</a></li>
                 </ol>
             </div>
         </div>
@@ -34,9 +34,16 @@
                     <div class="card-header" style="background-color:rgb(246, 244, 244);">
                         <!-- Button trigger modal -->
                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#tambah"
-                            style="float: right; background-color:rgb(160, 135, 135);color:gold;border-radius:10%">
+                            style="float: left; background-color:rgb(160, 135, 135);color:gold;border-radius:10%">
                             + Product
                         </button>
+                        <form class="d-flex" method="get" action="/searchproduct" style="float:right">
+                            <input class="form-control me-2" name="search" type="search" placeholder="Search"
+                                style="border-color: rgb(104, 75, 64); color:rgb(104, 75, 64)" aria-label="Search">
+                            <button class="btn btn-outline" value="SEARCH" type="submit"
+                                style="color:rgb(104, 75, 64)"><i class="fas fa-search"></i></button>
+                        </form>
+
 
                         <!-- Modal create -->
                         <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel"

@@ -13,13 +13,20 @@ class DoTransactionController extends Controller
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
+        $usercart = UserCart::where('user_id', $user_id)->get();
         $tgl = NOW();
         $transaksi = new TransaksiHeader;
         $transaksi->user_id = $user_id;
         $transaksi->jumlah = $request->input('total');
         $transaksi->tipe_pembayaran = "tunai";
         $transaksi->dibayar = $request->input('dibayar');
+        $transaksi->username = $request->input('username');
         $transaksi->status = "proses";
+        foreach ($usercart as $cart) {
+            $transaksi->qty = $cart->quantity;
+            $transaksi->product_id = $cart->product_id;
+
+        }
         $transaksi->save();
 
         $idtransaksi = TransaksiHeader::findOrFail($transaksi->id);

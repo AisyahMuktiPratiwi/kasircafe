@@ -59,7 +59,7 @@
 
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="{{route('product.index')}}" class="nav-link brand-text font-weight-light"
+                    <a href="{{route('laporanMj.index')}}" class="nav-link brand-text font-weight-light"
                         style="color:gold">
                         <i class="nav-icon fas fa-file-invoice"></i>
                         <p>Laporan</p>

@@ -25,11 +25,15 @@ class TransaksiDetail extends Model
      */
     public function produk()
     {
-        return $this->belongsTo(Product::class, 'product_id', 'id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class, 'user_id', 'id');
-    // }
+    public function relasiCart()
+    {
+        return $this->hasMany(Product::class, 'id', 'product_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 
 }

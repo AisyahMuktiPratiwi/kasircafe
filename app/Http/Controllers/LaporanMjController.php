@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\LaporanExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
+use Carbon\Carbon;
+
 use App\Models\Product;
 use App\Models\TransaksiDetail;
 use App\Models\TransaksiHeader;
 use App\Models\User;
-use Carbon\Carbon;
+use TransaksiHeader as GlobalTransaksiHeader;
 
-class LaporanKasirController extends Controller
+class LaporanMjController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,15 +32,26 @@ $data = TransaksiDetail::all();
 $laporan = TransaksiHeader::all
 ();
 
-        return view('laporan.index', compact('laporan','data'));
+        return view('laporan.manager', compact('laporan','data'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function tanggal(Request $request)
+    public function laporanexport()
+    {
+        //
+        return Excel::download(new LaporanExport,'laporan.xlsx');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function tgl(Request $request)
     {
         //
 
@@ -47,18 +63,7 @@ $laporan = TransaksiHeader::all
             $laporan = TransaksiHeader::latest()->get();
         }
 
-        return view('laporan.index', compact('laporan'));
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return view('laporan.manager', compact('laporan'));
     }
 
     /**
@@ -67,6 +72,15 @@ $laporan = TransaksiHeader::all
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function search(Request $request)
+    {
+
+        $keyword = $request->search;
+
+        $laporan = TransaksiHeader::where('username', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('laporan.manager', compact('laporan'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
     public function show($id)
     {
         //

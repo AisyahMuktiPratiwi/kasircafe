@@ -650,6 +650,27 @@
             padding-left: 4px;
         }
     }
+
+    .animasi-teks {
+        font-size: 29px;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        -webkit-animation: typing 4s steps(70, end)infinite;
+        animation: animasi-ketik 4s steps(70, end)infinite;
+    }
+
+    @keyframes animasi-ketik {
+        from {
+            width: 0;
+        }
+    }
+
+    @-webkit-keyframes animasi-ketik {
+        from {
+            width: 0;
+        }
+    }
     </style>
 </head>
 
@@ -689,23 +710,27 @@
 
         <div class="row g-4 ">
             <div class="col-12 col-md-6 col-lg-5 col-xl-5 col-xxl-5">
-                <div class="Text1">
-                    <h2 style="font-family: 'Sail', cursive;">Selamat Datang </h2>
+                <div class="animasi-teks">
+                    <div class="Text1">
+                        <h2 style="font-family: 'Sail', cursive;">Selamat Datang </h2>
+                    </div>
                 </div>
-
-                <div class="Text2">
-                    <h1 style="font-family: 'Sail', cursive;">Di<span>Cafe Ngopi</span></h1>
-                    <div class="Button">
-                        <a href="/login"><button>Login</button></a>
+                <div class="animasi-teks">
+                    <div class="Text2">
+                        <h1 style="font-family: 'Sail', cursive;">Di<span>Cafe Ngopi</span></h1>
+                        <div class="Button">
+                            <a href="/login"><button>Login</button></a>
+                        </div>
                     </div>
                     <br>
-                    <p style="font-family: 'Sail', cursive;">
+                    <div class="animasi-teks">
+                        <p style="font-family: 'Sail', cursive;">
 
-                        Login sesuai akun yang telah diberikan.
+                            Login sesuai akun yang telah diberikan.
 
-                    </p>
+                        </p>
 
-
+                    </div>
 
                 </div>
 
@@ -792,5 +817,6 @@
     </script>
 
 </body>
+
 
 </html>

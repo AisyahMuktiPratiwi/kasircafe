@@ -11,6 +11,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\DoTransactionController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\LaporanKasirController;
+use App\Http\Controllers\LaporanMjController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,10 +38,16 @@ Auth::routes();
 
 Route::resource('product', \App\Http\Controllers\ProductController::class)->middleware('auth', 'levelmanager');
 Route::get('/product/destroy/{id}',[ProductController::class, 'destroy'])->name('product.destroy');
+Route::get('/searchproduct', [ProductController::class, 'search'])->name('searchproduct');
 
+Route::resource('laporanMj',\App\Http\Controllers\LaporanMjController::class)->middleware('auth', 'levelmanager');
+Route::get('/tgl', [LaporanMjController::class, 'tgl'])->name('tgl');
+Route::get('/exportlaporan',[LaporanMjController::class, 'laporanexport'])->name('exportlaporan');
+Route::get('/search', [LaporanMjController::class, 'search'])->name('search');
 
 Route::resource('dashboard',\App\Http\Controllers\DashboardController::class)->middleware('auth', 'levelmanager', 'level','levelkasir');
 Route::resource('depan', \App\Http\Controllers\DepanController::class);
+
 
 Route::resource('cart', \App\Http\Controllers\UserCartController::class)->middleware('auth', 'levelkasir');
 Route::get('/delete/{id}',[UserCartController::class, 'destroy'])->name('delete');
@@ -48,6 +55,7 @@ Route::resource('order',\App\Http\Controllers\OrderController::class)->middlewar
 Route::resource('do_transaction', \App\Http\Controllers\DoTransactionController::class)->middleware('auth', 'levelkasir');
 Route::resource('invoice',\App\Http\Controllers\InvoiceController::class)->middleware('auth', 'levelkasir');
 Route::resource('laporan',\App\Http\Controllers\LaporanKasirController::class)->middleware('auth', 'levelkasir');
+Route::get('/tanggal', [LaporanKasirController::class, 'tanggal'])->name('tanggal');
 
 Route::resource('activitylog',\App\Http\Controllers\ActivityLogController::class)->middleware('auth', 'levelkasir','level');
 

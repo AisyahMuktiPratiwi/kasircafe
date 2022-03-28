@@ -106,6 +106,9 @@
                         @else
                         <input type="hidden" name="dibayar" value="0">
                         @endif
+
+                        <input type="hidden" class="form-control" name="username" value="{{Auth::user()->name}}">
+
                         <button type="submit" class="btn text-right"
                             style="background-color:rgb(104, 75, 64);color:gold"> Transaksi</button>
                     </form>
@@ -141,6 +144,8 @@
                                 <label for="">Nominal Uang : </label>
                                 <input type="number" class="form-control" name="nominal">
                             </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -153,4 +158,5 @@
         </div>
     </div>
 </div>
+
 @endsection

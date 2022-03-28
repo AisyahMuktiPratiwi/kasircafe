@@ -147,4 +147,12 @@ $product= Product::find($id);
         activity()->log('Menghapus Produk');
         return redirect()->route('product.index')->with('success',' Data Berhasil Di Hapus');
     }
+    public function search(Request $request)
+    {
+
+        $keyword = $request->search;
+
+        $product = Product::where('name', 'like', "%" . $keyword . "%")->paginate(5);
+        return view('product.index', compact('product'))->with('i', (request()->input('page', 1) - 1) * 5);
+    }
 }

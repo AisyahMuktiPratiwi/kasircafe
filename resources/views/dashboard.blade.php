@@ -1,7 +1,24 @@
 @extends('layouts.master')
 @section('title')
 
+<style>
+.blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
 
+@keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+
+@-webkit-keyframes blink-animation {
+    to {
+        visibility: hidden;
+    }
+}
+</style>
 
 <title>
     Cafe Ngopi | Dashboard
@@ -33,7 +50,7 @@
                 <!-- small box -->
                 <div class="small-box" style="background-color:rgb(160, 135, 135);color:gold">
                     <div class="inner">
-                        <h3>53</h3>
+                        <h3> {{ $lprn }}</h3>
 
                         <p>Transaksi Seluruh Kasir </p>
                     </div>
@@ -49,7 +66,11 @@
                 <!-- small box -->
                 <div class="small-box" style="background-color:rgb(160, 135, 135);color:gold">
                     <div class="inner">
-                        <h3>53</h3>
+                        <h3>
+                            {{ $laporan }}
+
+
+                        </h3>
 
                         <p>Jumlah Transaksi </p>
                     </div>
@@ -90,25 +111,26 @@
         <div class="row">
             <div class="card"
                 style="box-shadow: rgb(224, 210, 210) 7px 8px 14px;width:80%;margin:0 auto;color:rgb(160, 135, 135) ;text-align:center;padding:50px;border:10px dashed rgb(224, 210, 210);background-color:rgb(246, 244, 244)">
+                <div class="blink">
+                    <h1 style="font-family: 'Sail', cursive;font-size:35px;">Selamat Datang di Dashboard
+                        {{Auth::user()->level}}</h1>
 
-                <h1 style="font-family: 'Sail', cursive;font-size:35px;">Selamat Datang di Dashboard
-                    {{Auth::user()->level}}</h1>
+                    <br>
 
-                <br>
-
-                <h6 style="font-family: 'Vast Shadow' , cursive; font-size: 15px;">Silahkan lakukan aktivitas sesuai
-                    hak
-                    ases yang telah diberikan !
-                </h6>
-
-
+                    <h6 style="font-family: 'Vast Shadow' , cursive; font-size: 15px;">Silahkan lakukan aktivitas sesuai
+                        hak
+                        ases yang telah diberikan !
+                    </h6>
+                </div>
             </div>
-
         </div>
+
     </div>
+
 </section>
 <br>
 <br>
+
 
 
 @endsection

@@ -62,7 +62,7 @@
                                                 style="background-color:rgb(160, 135, 135) ;">{{ $item->description }}</span>
                                         </td>
                                         <td><span class="badge"
-                                                style="background-color:rgb(160, 135, 135) ;">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+                                                style="background-color:brown ;">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
                                         </td>
                                         @endforeach
                                 </tbody>

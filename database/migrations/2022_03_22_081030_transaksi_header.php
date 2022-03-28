@@ -21,6 +21,9 @@ class TransaksiHeader extends Migration
             //total semua harga
             $table->float('jumlah');
             $table->string('status');
+            $table->string('qty');
+            $table->string('product_id');
+            $table->string('username');
             $table->timestamps();
         });
     }

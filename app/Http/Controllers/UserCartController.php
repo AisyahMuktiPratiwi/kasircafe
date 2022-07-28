@@ -72,7 +72,7 @@ class UserCartController extends Controller
         if (!$cart->save()) {
             return redirect()->back()->with('error', 'Gagal menambahkan ke keranjang');
         } else {
-            return redirect()->back()->with('success', 'Berhasil menambahkan ke keranjang');
+            return redirect()->back()->with('success', $product->name,'Berhasil menambahkan ke keranjang', $product->quantity);
         }
 
         // return redirect()->back()->with('success', 'Product added to cart successfully!');

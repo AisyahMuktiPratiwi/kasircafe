@@ -30,7 +30,23 @@
     <div class="container-fluid">
 
         <div class="row">
-
+            @if ($msg = Session::get('gagal'))
+            <div class="alert alert-danger">
+                <p>{{ $msg }}</p>
+            </div>
+            @endif
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+                @endforeach
+            </div>
+            @endif
+            @if (Session::has('test'))
+            <div class="alert alert-success" style="background-color: green; color: white">
+                <p>{{ Session::get('test') }}</p>
+            </div>
+            @endif
             <div class="col-4">
                 <div class="card">
                     <div class="card-header" style="color:gold;background-color:rgb(160, 135, 135)">
@@ -41,11 +57,104 @@
                         <div class="d-flex flex-column">
                             <p>Nama Kasir : {{ Auth::user()->name }}</b> </p>
                             <p class="ref"></p>
-                            <p class="tgl">Tanggal : {{ date('Y-m-d') }}</p>
+                            <p class="tgl">Tanggal : {{ date('d-m-y h:m:s') }}</p>
+                        </div>
+                    </div>
+                    <!-- <div class="card">
+                        <div class="card-header" style="color:gold;background-color:rgb(160, 135, 135)">
+                            <h3 class="card-title">Total Belanja</h3>
+                        </div>
+                        <div class="card-body d-flex align-items-center justify-content-center"
+                            style="background-color:rgb(230, 219, 219);">
+                            <h1 class=" text-bold totalnya" style="color:rgb(160, 135, 135)">Rp.
+                                {{ number_format($total_belanja, 2, ',', '.') }}</h1>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <!-- <div class="col-8">
+                <div class="card">
+                    <div class="card-header" style="color:gold;background-color:rgb(160, 135, 135)">
+                        <h3 class="card-title">Keranjang Barang
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-bordered table-hovered">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nama Barang</th>
+                                    <th>Barcode</th>
+                                    <th>Qty</th>
+                                    <th>Harga (Rp.)</th>
+                                    <th>Subtotal (Rp.)</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($cart as $ct)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $ct->product->name }}</td>
+                                    <td>@php
+                                        echo DNS1D::getBarcodeSVG($ct->barcode, 'C39');
+                                        @endphp</td>
+                                    <td>{{ $ct->quantity }}</td>
+                                    <td>{{ $ct->product->price }}</td>
+                                    <td>{{ $ct->subTotal }}</td>
+                                    <td>
+                                        <a class="btn btn-outline-warning delete" data-id="{{$ct->id}}"
+                                            data-nama="{{$ct->name}}"
+                                            style="color:rgb(104, 75, 64) ; border-color:rgb(104, 75, 64);"><i class=" fas
+                                                fa-trash"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        <a href="{{ route('order.index') }}" class="btn"
+                            style="color:gold;background-color:rgb(160, 135, 135)">CheckOut</a>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="col-3">
+                <div class="card">
+                    <div class="card-header" style="color:gold;background-color:rgb(160, 135, 135)">
+                        <h3 class="card-title">Product Stock</h3>
+                    </div>
+                    <div class="card-body d-flex justify-content-between">
+
+                        <div class="d-flex flex-column">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nama </th>
+                                        <th>quantity</th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+                                    @foreach ($cart as $ct )
+                                    <tr>
+
+
+
+                                        <td>{{ $ct->product->name }}</td>
+                                        <td>{{$ct->product->quantity}}</td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
             <div class="col-4">
                 <div class="card">
                     <div class="card-header" style="color:gold;background-color:rgb(160, 135, 135)">
@@ -60,7 +169,10 @@
                                 <select name="product_id" class="form-control">
 
                                     @foreach ($products as $product)
-                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+
+                                    <option value="{{ $product->id }}">{{ $product->name }}
+
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -88,6 +200,36 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="col-4">
+                <div class="card">
+                    <div class="card-header" style="color:gold;background-color:rgb(160, 135, 135)">
+                        <h3 class="card-title">Product Stock</h3>
+                    </div>
+                    <div class="card-body d-flex justify-content-between">
+
+                        <div class="d-flex flex-column">
+                            <table>
+                                <thead>
+                                    <th>Nama </th>
+                                    <th>quantity</th>
+                                </thead>
+                                <tbody>
+                                    @foreach ($cart as $ct )
+                                    <tr>
+
+
+
+                                        <td>{{ $ct->product->name }}</td>
+                                        <td>{{$ct->product->quantity}}</td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-12">
@@ -139,4 +281,5 @@
             </div>
         </div>
 </section>
+
 @endsection

@@ -17,7 +17,10 @@ class TransaksiHeader extends Model
     {
         return $this->belongsTo(Product::class, 'product_id');
     }
-
+    public function logactivity()
+{
+    return $this->belongsTo(ActivityLog::class, 'activitylog_id');
+}
 
     public function relasiCart()
     {

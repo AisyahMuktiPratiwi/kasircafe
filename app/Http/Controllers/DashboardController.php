@@ -15,12 +15,15 @@ class DashboardController extends Controller
 {
     //
     public function index(Request $request){
+        $product= Product::all();
 
         $jumlahmenu = Product::count();
         $jumlahuser = User::count();
         $lprn=  TransaksiHeader::count();
         $laporan =TransaksiHeader::with('user')->where('user_id', Auth::user()->id)->count();
 
-        return view('dashboard', compact('jumlahmenu','jumlahuser','lprn','laporan'));
+        return view('dashboard', compact('jumlahmenu','jumlahuser','lprn','laporan','product'));
     }
+
+
 }

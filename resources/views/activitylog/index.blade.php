@@ -46,13 +46,15 @@
                                         <th>Nama</th>
                                         <th>Aktivitas</th>
                                         <th>Waktu</th>
+                                        <!-- <th>Detail</th> -->
 
 
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($activity_log as $item)
+                                    @foreach ($activity_log as $item)
+
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td class="font-w600 text-center" style="width: 100px"><span class="badge"
@@ -64,6 +66,9 @@
                                         <td><span class="badge"
                                                 style="background-color:brown ;">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
                                         </td>
+
+                                    <tr>
+
                                         @endforeach
                                 </tbody>
                             </table>

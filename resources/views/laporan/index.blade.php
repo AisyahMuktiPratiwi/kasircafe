@@ -68,10 +68,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Nama</th>
                                     <th>Nama Product</th>
                                     <th>Quantity</th>
                                     <th>Jumlah harga</th>
                                     <th>Uang Yang Dibayar</th>
+                                    <th>Kembalian</th>
                                     <th>Tipe Pembayaran</th>
                                     <th>Status</th>
                                     <th>Tanggal</th>
@@ -86,10 +88,13 @@
 
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $lprn->username }}</td>
                                     <td>{{ $lprn->product->name }}</td>
                                     <td>{{ $lprn->qty }}</td>
-                                    <td>{{$lprn->jumlah}}</td>
-                                    <td>{{$lprn->dibayar}}</td>
+                                    <td>Rp. {{ number_format($lprn->jumlah, 2, '.', ',') }}</lprnd>
+                                    <td>Rp. {{ number_format($lprn->dibayar, 2, '.', ',') }}</td>
+
+                                    <td>Rp. {{ number_format($lprn->dibayar - $lprn->jumlah, 2, '.', ',') }}</td>
                                     <td>{{$lprn->tipe_pembayaran}}</td>
                                     <td>{{$lprn->status}}</td>
 

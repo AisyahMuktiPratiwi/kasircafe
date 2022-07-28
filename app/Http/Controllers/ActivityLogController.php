@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\ActivityLog;
+use App\Models\TransaksiHeader;
+use App\Models\Invoice;
+use App\Models\Transaksi;
 
 use Illuminate\Http\Request;
 
@@ -16,10 +19,13 @@ class ActivityLogController extends Controller
     public function index()
     {
         //
-        $user = User::select()->count();
+        // $transaksi = Transaksi::all();
+        // $user = User::select()->count();
+        // $laporan = TransaksiHeader::all();
         $activity_log = ActivityLog::with('user')->latest()->limit(10)->orderBy('id','DESC')->get();
-        return view('activitylog.index', compact('user', 'activity_log'));
+        return view('activitylog.index', compact('activity_log'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -48,10 +54,7 @@ class ActivityLogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.

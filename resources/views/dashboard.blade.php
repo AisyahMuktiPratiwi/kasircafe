@@ -42,7 +42,8 @@
                     <div class="icon">
                         <i class="fas fa-mug-hot"></i>
                     </div>
-
+                    <a href="/product" class="small-box-footer" style="color:gold">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             <!-- ./col -->
@@ -57,7 +58,8 @@
                     <div class="icon">
                         <i class="fas fa-file-invoice"></i>
                     </div>
-
+                    <a href="/laporanMj" class="small-box-footer" style="color:gold">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             @endif
@@ -77,7 +79,8 @@
                     <div class="icon">
                         <i class="fas fa-file-invoice"></i>
                     </div>
-
+                    <a href="/laporan" class="small-box-footer" style="color:gold">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             @endif
@@ -94,7 +97,8 @@
                     <div class="icon">
                         <i class="fas fa-user-edit"></i>
                     </div>
-
+                    <a href="/user" class="small-box-footer" style="color:gold">More info <i
+                            class="fas fa-arrow-circle-right"></i></a>
                 </div>
             </div>
             @endif
@@ -126,10 +130,56 @@
         </div>
 
     </div>
+    <!-- @if(Auth::user()->level == 'Kasir')
+    <div class="card-body" style="background-color:rgb(246, 244, 244);">
+        <table id="" class="table table-striped table-hover table-bordered table-responsive-lg">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Barcode</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($product as $pr)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $pr->name }}</td>
+                    <td> <img src="{{ asset('gmbrproduct/'.$pr->image)}}" alt="" style="width:100px;">
+                    </td>
+                    <td> @php
+                        echo DNS1D::getBarcodeSVG($pr->barcode, 'C128');
+                        @endphp</td>
+                    <td>{{ $pr->description }}</td>
+                    <td>{{ $pr->price }}</td>
+                    <td>{{ $pr->quantity }}</td>
+                    @if ($pr->status == 1)
+                    <td><a href="#" class="btn btn-success">Active</a></td>
+                    @else
+                    <td><a href="#" class="btn btn-danger">Inactive</a></td>
+                    @endif
+
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="9" class="text-center">Belum Ada Data</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+    @endif -->
 
 </section>
 <br>
 <br>
+
 
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Mar 2022 pada 09.45
+-- Waktu pembuatan: 28 Jul 2022 pada 14.20
 -- Versi server: 10.4.13-MariaDB
 -- Versi PHP: 7.4.8
 
@@ -74,7 +74,17 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `su
 (27, 'default', 'Melakukan Order', NULL, NULL, 'App\\Models\\User', 4, '[]', '2022-03-29 07:10:54', '2022-03-29 07:10:54'),
 (28, 'default', 'Menambahkan Akun', NULL, NULL, 'App\\Models\\User', 1, '[]', '2022-03-29 19:34:37', '2022-03-29 19:34:37'),
 (29, 'default', 'Melakukan Order', NULL, NULL, 'App\\Models\\User', 4, '[]', '2022-03-29 19:40:28', '2022-03-29 19:40:28'),
-(30, 'default', 'Melakukan Order', NULL, NULL, 'App\\Models\\User', 4, '[]', '2022-03-29 21:45:13', '2022-03-29 21:45:13');
+(30, 'default', 'Melakukan Order', NULL, NULL, 'App\\Models\\User', 4, '[]', '2022-03-29 21:45:13', '2022-03-29 21:45:13'),
+(31, 'default', 'Mengedit Akun', NULL, NULL, 'App\\Models\\User', 1, '[]', '2022-06-21 02:25:36', '2022-06-21 02:25:36'),
+(32, 'default', 'Mengedit Akun', NULL, NULL, 'App\\Models\\User', 1, '[]', '2022-06-21 02:26:06', '2022-06-21 02:26:06'),
+(33, 'default', 'Mengedit Akun', NULL, NULL, 'App\\Models\\User', 1, '[]', '2022-06-21 02:26:07', '2022-06-21 02:26:07'),
+(34, 'default', 'Mengedit Akun', NULL, NULL, 'App\\Models\\User', 1, '[]', '2022-06-21 02:28:03', '2022-06-21 02:28:03'),
+(35, 'default', 'Mengedit Akun', NULL, NULL, 'App\\Models\\User', 1, '[]', '2022-06-21 02:28:15', '2022-06-21 02:28:15'),
+(36, 'default', 'Mengedit Akun', NULL, NULL, 'App\\Models\\User', 1, '[]', '2022-06-21 02:28:27', '2022-06-21 02:28:27'),
+(37, 'default', 'Melakukan Order', NULL, NULL, 'App\\Models\\User', 4, '[]', '2022-06-21 02:59:30', '2022-06-21 02:59:30'),
+(38, 'default', 'Mengedit Produk', NULL, NULL, 'App\\Models\\User', 2, '[]', '2022-06-21 04:43:14', '2022-06-21 04:43:14'),
+(39, 'default', 'Melakukan Order', NULL, NULL, 'App\\Models\\User', 4, '[]', '2022-06-21 06:22:06', '2022-06-21 06:22:06'),
+(40, 'default', 'Melakukan Order', NULL, NULL, 'App\\Models\\User', 4, '[]', '2022-07-28 05:18:13', '2022-07-28 05:18:13');
 
 -- --------------------------------------------------------
 
@@ -260,10 +270,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `image`, `barcode`, `price`, `quantity`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'kopi', 'kopi', 'images (55).jpeg', '646', '5000.00', 8, 1, '2022-03-27 05:50:12', '2022-03-29 19:39:54'),
+(1, 'kopi', 'kopi', 'images (55).jpeg', '646', '5000.00', 6, 1, '2022-03-27 05:50:12', '2022-07-28 05:17:29'),
 (2, 'americano', 'hot coffe', 'images (54).jpeg', '3547', '40000.00', 12, 1, '2022-03-29 03:10:43', '2022-03-29 22:24:38'),
 (3, 'Moccacino', 'ice coffee', 'images (56).jpeg', '6463', '25000.00', 10, 0, '2022-03-29 03:12:14', '2022-03-29 22:24:56'),
-(4, 'Vanilla Latte', 'ice coffee', 'A124AF90-FAB0-4EFB-B25F-536F4F52AC0D.jpg', '8790', '35000.00', 12, 1, '2022-03-29 03:13:24', '2022-03-29 22:12:18'),
+(4, 'Vanilla Latte', 'ice coffee', 'A124AF90-FAB0-4EFB-B25F-536F4F52AC0D.jpg', '8790', '35000.00', 11, 0, '2022-03-29 03:13:24', '2022-06-21 06:14:03'),
 (5, 'Cappucino', 'ice coffee', 'images (52).jpeg', '9757', '25000.00', 10, 1, '2022-03-29 03:15:13', '2022-03-29 03:31:50'),
 (6, 'Hazelnut Latte', 'ice coffee', 'images (61).jpeg', '2435', '35000.00', 18, 1, '2022-03-29 03:18:11', '2022-03-29 03:18:12'),
 (7, 'caramel Latte', 'ice coffee', 'IMG_20220319_213154.jpg', '2343', '25000.00', 12, 1, '2022-03-29 03:19:54', '2022-03-29 06:58:32'),
@@ -324,7 +334,10 @@ INSERT INTO `transaksi_details` (`id`, `transaksi_id`, `product_id`, `user_id`, 
 (14, '13', '1', 4, 5000.00, '1', '5000', '2022-03-29 19:40:28', '2022-03-29 19:40:28'),
 (15, '14', '2', 4, 40000.00, '1', '40000', '2022-03-29 21:45:12', '2022-03-29 21:45:12'),
 (16, '14', '2', 4, 40000.00, '1', '40000', '2022-03-29 21:45:12', '2022-03-29 21:45:12'),
-(17, '14', '2', 4, 40000.00, '1', '40000', '2022-03-29 21:45:12', '2022-03-29 21:45:12');
+(17, '14', '2', 4, 40000.00, '1', '40000', '2022-03-29 21:45:12', '2022-03-29 21:45:12'),
+(18, '15', '1', 4, 5000.00, '1', '5000', '2022-06-21 02:59:29', '2022-06-21 02:59:29'),
+(19, '17', '4', 4, 35000.00, '1', '35000', '2022-06-21 06:22:04', '2022-06-21 06:22:04'),
+(20, '18', '1', 4, 5000.00, '1', '5000', '2022-07-28 05:18:12', '2022-07-28 05:18:12');
 
 -- --------------------------------------------------------
 
@@ -360,7 +373,11 @@ INSERT INTO `transaksi_headers` (`id`, `user_id`, `tipe_pembayaran`, `dibayar`, 
 (8, '5', 'tunai', '100000', 55000.00, 'proses', '1', '7', 'susanti', '2022-03-29 03:41:13', '2022-03-29 03:41:13'),
 (12, '4', 'tunai', '39000', 27500.00, 'proses', '1', '8', 'Kasir', '2022-03-29 07:10:54', '2022-03-29 07:10:54'),
 (13, '4', 'tunai', '10000', 5500.00, 'proses', '1', '1', 'Kasir', '2022-03-29 19:40:28', '2022-03-29 19:40:28'),
-(14, '4', 'tunai', '200000', 132000.00, 'proses', '1', '2', 'Kasir', '2022-03-29 21:45:11', '2022-03-29 21:45:11');
+(14, '4', 'tunai', '200000', 132000.00, 'proses', '1', '2', 'Kasir', '2022-03-29 21:45:11', '2022-03-29 21:45:11'),
+(15, '4', 'tunai', '100000', 5500.00, 'proses', '1', '1', 'Kasir', '2022-06-21 02:59:29', '2022-06-21 02:59:29'),
+(16, '4', 'tunai', '50000', 38500.00, 'proses', '1', '4', 'Kasir', '2022-06-21 06:15:36', '2022-06-21 06:15:36'),
+(17, '4', 'tunai', '50000', 38500.00, 'proses', '1', '4', 'Kasir', '2022-06-21 06:21:56', '2022-06-21 06:21:56'),
+(18, '4', 'tunai', '200000', 5500.00, 'proses', '1', '1', 'Kasir', '2022-07-28 05:18:11', '2022-07-28 05:18:11');
 
 -- --------------------------------------------------------
 
@@ -389,7 +406,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `le
 (2, 'Manager', 'manager@gmail.com', '2022-03-27 05:47:18', '$2y$10$T0UEIBy8.SPcAKj18p.YIu8fjKOse.hnEkjJNwsZCMu68rLDHcNta', 'Manager', NULL, '2022-03-27 05:47:19', '2022-03-27 05:47:19'),
 (3, 'Upin', 'upin@gmail.com', '2022-03-27 05:47:19', '$2y$10$pMlGD2yZ2eEuluDBgBLV5.5tUzRBzVDubgGtmXHqboXFCMjne4C46', 'Kasir', NULL, '2022-03-27 05:47:19', '2022-03-28 09:27:59'),
 (4, 'Kasir', 'kasir@gmail.com', '2022-03-27 05:47:19', '$2y$10$.QY9t9c2gUIxmy45aBT4V.shCEvZzTfdmcnDYdn4cMryd/w3fUvpi', 'Kasir', NULL, '2022-03-27 05:47:19', '2022-03-27 05:47:19'),
-(5, 'susanti', 'susanti@gmail.com', NULL, '$2y$10$lGy92FVzijQte4DByhlTseERD1WGoyAjwXn05ww/0hvqLP4yBt9o6', 'Kasir', NULL, '2022-03-29 03:37:29', '2022-03-29 03:37:29'),
+(5, 'susanti', 'susanti@gmail.com', NULL, '$2y$10$l3WLox48In7Y.wQGiUiLue55QDWDecShYw9BceKKi6SuViIgA2PGK', 'Manager', NULL, '2022-03-29 03:37:29', '2022-06-21 02:28:30'),
 (6, 'cika', 'cika@gmail.com', NULL, '$2y$10$d5lEYMulkEVHGwAi/zVjWexTzVI5L9WRhLIy3HUbV2QNrxWjtHDf6', 'Kasir', NULL, '2022-03-29 19:34:37', '2022-03-29 19:34:37');
 
 -- --------------------------------------------------------
@@ -536,7 +553,7 @@ ALTER TABLE `user_carts`
 -- AUTO_INCREMENT untuk tabel `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT untuk tabel `customers`
@@ -608,13 +625,13 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT untuk tabel `transaksi_details`
 --
 ALTER TABLE `transaksi_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi_headers`
 --
 ALTER TABLE `transaksi_headers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
@@ -626,7 +643,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `user_carts`
 --
 ALTER TABLE `user_carts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
